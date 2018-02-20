@@ -11,7 +11,7 @@ our projects we decided to create a small helper library to separate this from o
 
 # How to use
 
-There is only one function to call from SocialLinkify, that is socialLinkifyText(). This will return
+There is only one function to call from SocialLinkify, that is [socialLinkifyText()](https://github.com/bufferapp/SocialLinkify/blob/task/open-source-project/lib/src/main/java/org/buffer/sociallinkify/SocialLinkify.kt#L32). This will return
 you an instance of a Spannable which you can then use to set your textview content to. This function
 takes four parameters:
 
@@ -19,10 +19,10 @@ takes four parameters:
 
 - text - The String that you wish to apply linking to
 
-- socialNetwork - The SocialNetwork which you want the elements to be linked to. This can be either
+- socialNetwork - The [SocialNetwork](https://github.com/bufferapp/SocialLinkify/blob/task/open-source-project/lib/src/main/java/org/buffer/sociallinkify/model/SocialNetwork.kt) which you want the elements to be linked to. This can be either
 TWITTER, FACEBOOK or INSTAGRAM.
 
-- patternTypes - A varargs parameter for the PatternType patterns that you want to be recognised, this can be
+- patternTypes - A varargs parameter for the [PatternType](https://github.com/bufferapp/SocialLinkify/blob/task/open-source-project/lib/src/main/java/org/buffer/sociallinkify/model/PatternType.kt) patterns that you want to be recognised, this can be
 any collection of HASHTAG, MENTION and URL.
 
 For example, if I want to create linked spans for Twitter @ mentions, Hashtags & URLs:
@@ -43,5 +43,5 @@ or if I just want to create linked spans for Facebook hashtags:
             ContextCompat.getColor(context, R.color.some_color), message.text,
             SocialNetwork.FACEBOOK, PatternType.HASHTAG)
 
-The SocialNetwork class also has a handy fromString method to allow you to retrieve a SocialNetwork
+The SocialNetwork class also has a handy [fromString()](https://github.com/bufferapp/SocialLinkify/blob/task/open-source-project/lib/src/main/java/org/buffer/sociallinkify/model/SocialNetwork.kt#L7) function to allow you to retrieve a SocialNetwork
 instance from some string that may be used in your app such as "twitter".
