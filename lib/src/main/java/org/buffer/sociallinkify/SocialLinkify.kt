@@ -11,7 +11,7 @@ import org.buffer.sociallinkify.span.CustomTabUrlSpan
 import org.buffer.sociallinkify.span.HashtagMentionUrlSpan
 import java.util.regex.Pattern
 
-open class SocialLinkify {
+object SocialLinkify {
 
     val URL_BASE_MENTION_TWITTER = "https://twitter.com/"
     val URL_BASE_HASHTAG_TWITTER = "https://twitter.com/search?q="
