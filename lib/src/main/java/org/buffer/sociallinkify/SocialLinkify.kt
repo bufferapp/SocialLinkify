@@ -26,9 +26,9 @@ object SocialLinkify {
     private val urlPattern = Patterns.WEB_URL
     private val emailPattern = Patterns.EMAIL_ADDRESS
 
-    private val patterns = mapOf<PatternType, Pattern>(PatternType.HASHTAG to hashtagPattern,
-            PatternType.MENTION to mentionPattern, PatternType.URL to urlPattern,
-            PatternType.EMAIL to emailPattern)
+    private val patterns = mapOf<PatternType, Pattern>(PatternType.EMAIL to emailPattern,
+            PatternType.URL to urlPattern, PatternType.HASHTAG to hashtagPattern,
+            PatternType.MENTION to mentionPattern)
 
     fun socialLinkifyText(color: Int, text: String?, socialNetwork: SocialNetwork,
                           vararg patternTypes: PatternType): Spanned {
