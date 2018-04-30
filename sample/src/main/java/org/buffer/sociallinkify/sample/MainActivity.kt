@@ -7,7 +7,10 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.buffer.sociallinkify.SocialLinkify
 import org.buffer.sociallinkify.model.PatternType
-import org.buffer.sociallinkify.model.PatternType.*
+import org.buffer.sociallinkify.model.PatternType.EMAIL
+import org.buffer.sociallinkify.model.PatternType.HASHTAG
+import org.buffer.sociallinkify.model.PatternType.MENTION
+import org.buffer.sociallinkify.model.PatternType.URL
 import org.buffer.sociallinkify.model.SocialNetwork
 
 class MainActivity : Activity() {
@@ -25,21 +28,22 @@ class MainActivity : Activity() {
         tvInstagramMention.mentionify(R.string.instagram_mention, SocialNetwork.INSTAGRAM)
         tvInstagramHashtag.hashtagify(R.string.instagram_hashtag, SocialNetwork.INSTAGRAM)
         tvFacebookHashtag.hashtagify(R.string.facebook_hashtag, SocialNetwork.FACEBOOK)
+        tvEmail.linkify(R.string.email_text, SocialNetwork.FACEBOOK, EMAIL)
     }
 
-    fun TextView.hashtagify(stringResId: Int,
-                            socialNetwork: SocialNetwork) {
+    private fun TextView.hashtagify(stringResId: Int,
+                                    socialNetwork: SocialNetwork) {
         linkify(stringResId, socialNetwork, HASHTAG)
     }
 
-    fun TextView.mentionify(stringResId: Int,
-                            socialNetwork: SocialNetwork) {
+    private fun TextView.mentionify(stringResId: Int,
+                                    socialNetwork: SocialNetwork) {
         linkify(stringResId, socialNetwork, MENTION)
     }
 
-    fun TextView.linkify(stringResId: Int,
-                         socialNetwork: SocialNetwork,
-                         patternType: PatternType = URL) {
+    private fun TextView.linkify(stringResId: Int,
+                                 socialNetwork: SocialNetwork,
+                                 patternType: PatternType = URL) {
         movementMethod = LinkMovementMethod.getInstance()
         text = SocialLinkify.socialLinkifyText(
                 resources.getColor(R.color.colorAccent),

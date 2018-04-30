@@ -3,12 +3,14 @@ package org.buffer.sociallinkify
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.SpannedString
+import android.text.style.URLSpan
 import android.util.Patterns
 import org.buffer.sociallinkify.model.PatternType
 import org.buffer.sociallinkify.model.SocialNetwork
 import org.buffer.sociallinkify.span.CustomTabUrlSpan
 import org.buffer.sociallinkify.span.HashtagMentionUrlSpan
 import java.util.regex.Pattern
+
 
 object SocialLinkify {
 
@@ -44,9 +46,12 @@ object SocialLinkify {
                             val start = this.start()
                             val end = this.end()
                             val spanText = text.substring(start, end)
-                            val url = buildSpan(color, spanText, socialNetwork,
-                                    patternTypes[index])
-                            spannable.setSpan(url, start, end, 0)
+                            val spans = spannable.getSpans(0, spannable.length, URLSpan::class.java)
+                            if (spans.isEmpty()) {
+                                val url = buildSpan(color, spanText, socialNetwork,
+                                        patternTypes[index])
+                                spannable.setSpan(url, start, end, 0)
+                            }
                         }
                     }
                 }

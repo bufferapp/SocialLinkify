@@ -37,4 +37,12 @@
     <TextView
         android:id="@+id/tvFacebookHashtag"
         style="@style/TextAppearance.Content" />
+
+    <TextView
+        style="@style/TextAppearance.Divider"
+        android:text="@string/divider_email" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        style="@style/TextAppearance.Content" />
 </LinearLayout>
