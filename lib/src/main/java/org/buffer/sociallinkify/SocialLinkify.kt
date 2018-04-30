@@ -46,7 +46,7 @@ object SocialLinkify {
                             val start = this.start()
                             val end = this.end()
                             val spanText = text.substring(start, end)
-                            val spans = spannable.getSpans(0, spannable.length, URLSpan::class.java)
+                            val spans = spannable.getSpans(start, end, URLSpan::class.java)
                             if (spans.isEmpty()) {
                                 val url = buildSpan(color, spanText, socialNetwork,
                                         patternTypes[index])
