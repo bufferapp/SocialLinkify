@@ -24,9 +24,11 @@ object SocialLinkify {
     private val hashtagPattern = Pattern.compile("#(\\w+)")
     private val mentionPattern = Pattern.compile("@(\\w+)")
     private val urlPattern = Patterns.WEB_URL
+    private val emailPattern = Patterns.EMAIL_ADDRESS
 
     private val patterns = mapOf<PatternType, Pattern>(PatternType.HASHTAG to hashtagPattern,
-            PatternType.MENTION to mentionPattern, PatternType.URL to urlPattern)
+            PatternType.MENTION to mentionPattern, PatternType.URL to urlPattern,
+            PatternType.EMAIL to emailPattern)
 
     fun socialLinkifyText(color: Int, text: String?, socialNetwork: SocialNetwork,
                           vararg patternTypes: PatternType): Spanned {
@@ -55,12 +57,15 @@ object SocialLinkify {
     private fun buildSpan(color: Int, text: String, socialNetwork: SocialNetwork,
                           patternType: PatternType) = when (patternType) {
         PatternType.URL -> CustomTabUrlSpan(color, text)
+        PatternType.EMAIL -> HashtagMentionUrlSpan(color,
+                buildUrl(text, socialNetwork, patternType))
         else -> HashtagMentionUrlSpan(color, buildUrl(text, socialNetwork, patternType))
     }
 
     private fun buildUrl(entity: String, socialNetwork: SocialNetwork,
                          patternType: PatternType) = when (patternType) {
         PatternType.HASHTAG -> getHashtagUrlBase(socialNetwork) + entity.substring(1, entity.length)
+        PatternType.EMAIL -> "mailto:$entity"
         else -> getMentionUrlBase(socialNetwork) + entity.substring(1, entity.length)
     }
 
