@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SocialLinkify Sample</string>
+
+    <string name="divider_twitter">Twitter</string>
+    <string name="divider_instagram">Instagram</string>
+    <string name="divider_facebook">Facebook</string>
+
+    <string name="twitter_mention">Visit @Buffer on Twitter</string>
+    <string name="twitter_hashtag">View tweets with #buffer or #android</string>
+    <string name="instagram_mention">Visit @Buffer on Instagram</string>
+    <string name="instagram_hashtag">View photos with #buffer or #android</string>
+    <string name="facebook_hashtag">View posts with #buffer or #android</string>
+</resources>

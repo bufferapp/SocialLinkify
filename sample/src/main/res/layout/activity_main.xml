@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        style="@style/TextAppearance.Divider"
+        android:text="@string/divider_twitter" />
+
+    <TextView
+        android:id="@+id/tvTwitterMention"
+        style="@style/TextAppearance.Content" />
+
+    <TextView
+        android:id="@+id/tvTwitterHashtag"
+        style="@style/TextAppearance.Content" />
+
+    <TextView
+        style="@style/TextAppearance.Divider"
+        android:text="@string/divider_instagram" />
+
+    <TextView
+        android:id="@+id/tvInstagramMention"
+        style="@style/TextAppearance.Content" />
+
+    <TextView
+        android:id="@+id/tvInstagramHashtag"
+        style="@style/TextAppearance.Content" />
+
+    <TextView
+        style="@style/TextAppearance.Divider"
+        android:text="@string/divider_facebook" />
+
+    <TextView
+        android:id="@+id/tvFacebookHashtag"
+        style="@style/TextAppearance.Content" />
+</LinearLayout>
