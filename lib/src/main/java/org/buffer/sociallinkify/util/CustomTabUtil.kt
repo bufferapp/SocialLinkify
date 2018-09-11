@@ -1,5 +1,6 @@
 package org.buffer.sociallinkify.util
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -10,7 +11,11 @@ import android.util.TypedValue
 object CustomTabUtil {
 
     fun open(context: Context, uri: Uri) {
-        context.startActivity(buildIntent(context, uri))
+        try {
+            context.startActivity(buildIntent(context, uri))
+        } catch (error: ActivityNotFoundException) {
+            context.startActivity(Intent(Intent.ACTION_VIEW, uri))
+        }
     }
 
     private fun buildIntent(context: Context, uri: Uri): Intent {

@@ -1,16 +1,15 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
     buildToolsVersion "27.0.3"
     
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 28
     }
     buildTypes {
         release {
@@ -20,7 +19,21 @@ android {
     }
 }
 
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
 dependencies {
     implementation 'com.android.support:customtabs:27.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+
+publish {
+    repoName = 'Maven'
+    userOrg = 'buffer'
+    groupId = 'org.buffer.android'
+    artifactId = 'social-linkify'
+    publishVersion = '1.0'
+    desc = 'An Android library for linking @ mentions & Hashtags to their corresponding social network'
+    website = 'https://github.com/bufferapp/SocialLinkify'
 }
