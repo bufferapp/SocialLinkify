@@ -28,7 +28,7 @@ any collection of `HASHTAG`, `MENTION` and `URL`.
 For example, if I want to create linked spans for Twitter @ mentions, Hashtags & URLs:
 
 ``` java
-text_message.text = socialLinkify.socialLinkifyText(
+text_message.text = SocialLinkify.socialLinkifyText(
         ContextCompat.getColor(context, R.color.some_color), message.text,
         SocialNetwork.TWITTER, PatternType.HASHTAG, PatternType.MENTION, PatternType.URL)
 ```
@@ -36,7 +36,7 @@ text_message.text = socialLinkify.socialLinkifyText(
 or if I want to create linked spans for Instagram @ mentions only:
 
 ``` java
-text_message.text = socialLinkify.socialLinkifyText(
+text_message.text = SocialLinkify.socialLinkifyText(
         ContextCompat.getColor(context, R.color.some_color), message.text,
         SocialNetwork.INSTAGRAM, PatternType.MENTION)
 ```
@@ -44,7 +44,7 @@ text_message.text = socialLinkify.socialLinkifyText(
 or if I just want to create linked spans for Facebook hashtags:
 
 ``` java
-text_message.text = socialLinkify.socialLinkifyText(
+text_message.text = SocialLinkify.socialLinkifyText(
         ContextCompat.getColor(context, R.color.some_color), message.text,
         SocialNetwork.FACEBOOK, PatternType.HASHTAG)
 ```
