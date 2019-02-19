@@ -11,7 +11,11 @@ abstract class ClickableUrlSpan(url: String) : URLSpan(url) {
 
     override fun onClick(widget: View) {
         try {
-            CustomTabUtil.open(widget.context, Uri.parse(url))
+            if (url.contains(":")) {
+                CustomTabUtil.open(widget.context, Uri.parse(url))
+            } else {
+                CustomTabUtil.open(widget.context, Uri.parse("https://$url"))
+            }
         } catch (exception: ActivityNotFoundException) {
             Log.e(ClickableUrlSpan::class.java.simpleName,
                 "Whoops, that doesn't look like a valid URL.")
