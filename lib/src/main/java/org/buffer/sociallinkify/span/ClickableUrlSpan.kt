@@ -14,7 +14,7 @@ abstract class ClickableUrlSpan(url: String) : URLSpan(url) {
             if (url.contains(":")) {
                 CustomTabUtil.open(widget.context, Uri.parse(url))
             } else {
-                CustomTabUtil.open(widget.context, Uri.parse("http://$url"))
+                CustomTabUtil.open(widget.context, Uri.parse("https://$url"))
             }
         } catch (exception: ActivityNotFoundException) {
             Log.e(ClickableUrlSpan::class.java.simpleName,
