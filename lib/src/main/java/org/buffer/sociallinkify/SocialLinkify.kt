@@ -24,7 +24,7 @@ object SocialLinkify {
     val URL_BASE_HASHTAG_FACEBOOK = "https://www.facebook.com/hashtag/"
 
     private val hashtagPattern = Pattern.compile("#(\\w+)")
-    private val mentionPattern = Pattern.compile("@(\\w+)")
+    private val mentionPattern = Pattern.compile("@([a-zA-Z0-9._]+)")
     private val urlPattern = Patterns.WEB_URL
     private val emailPattern = Patterns.EMAIL_ADDRESS
 
