@@ -7,7 +7,7 @@ enum class SocialNetwork(val id: String) {
     LINKEDIN("linkedin"),
     PINTEREST("pinterest"),
     GOOGLE_PLUS("google"),
-    TIKTOK("tiktok"),
+    TIKTOK("tiktok");
 
     companion object {
         fun fromString(name: String) = when (name) {
