@@ -9,6 +9,7 @@ enum class SocialNetwork(val id: String) {
     GOOGLE_PLUS("google"),
     GOOGLEBUSINESS("googlebusiness"),
     STARTPAGE("startPage"),
+    MASTODON("mastodon"),
     TIKTOK("tiktok");
 
     companion object {
@@ -21,6 +22,7 @@ enum class SocialNetwork(val id: String) {
             GOOGLE_PLUS.id -> GOOGLE_PLUS
             GOOGLEBUSINESS.id -> GOOGLEBUSINESS
             STARTPAGE.id -> STARTPAGE
+            MASTODON.id -> MASTODON
             TIKTOK.id -> TIKTOK
             else -> throw IllegalArgumentException("Whoops, the social network $name isn't known!")
         }
