@@ -4,12 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.tvEmail
-import kotlinx.android.synthetic.main.activity_main.tvFacebookHashtag
-import kotlinx.android.synthetic.main.activity_main.tvInstagramHashtag
-import kotlinx.android.synthetic.main.activity_main.tvInstagramMention
-import kotlinx.android.synthetic.main.activity_main.tvTwitterHashtag
-import kotlinx.android.synthetic.main.activity_main.tvTwitterMention
+import kotlinx.android.synthetic.main.activity_main.*
 import org.buffer.sociallinkify.SocialLinkify
 import org.buffer.sociallinkify.model.PatternType
 import org.buffer.sociallinkify.model.PatternType.HASHTAG
@@ -18,6 +13,10 @@ import org.buffer.sociallinkify.model.PatternType.URL
 import org.buffer.sociallinkify.model.SocialNetwork
 
 class MainActivity : Activity() {
+
+    companion object {
+        const val server = "androiddev.social"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +31,8 @@ class MainActivity : Activity() {
         tvInstagramMention.mentionify(R.string.instagram_mention, SocialNetwork.INSTAGRAM)
         tvInstagramHashtag.hashtagify(R.string.instagram_hashtag, SocialNetwork.INSTAGRAM)
         tvFacebookHashtag.hashtagify(R.string.facebook_hashtag, SocialNetwork.FACEBOOK)
+        tvMastodonHashtag.hashtagify(R.string.mastodon_hashtag, SocialNetwork.MASTODON)
+        tvMastodonMention.mentionify(R.string.mastodon_mention, SocialNetwork.MASTODON)
         tvEmail.linkify(R.string.email_text, SocialNetwork.FACEBOOK, URL)
     }
 
@@ -50,10 +51,11 @@ class MainActivity : Activity() {
                                  patternType: PatternType = URL) {
         movementMethod = LinkMovementMethod.getInstance()
         text = SocialLinkify.socialLinkifyText(
-                resources.getColor(R.color.colorAccent),
-                getString(stringResId),
-                socialNetwork,
-                patternType
+            resources.getColor(R.color.colorAccent),
+            getString(stringResId),
+            socialNetwork,
+            patternType,
+            server = server
         )
     }
 }

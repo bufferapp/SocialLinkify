@@ -40,6 +40,18 @@
 
     <TextView
         style="@style/TextAppearance.Divider"
+        android:text="@string/divider_mastodon" />
+
+    <TextView
+        android:id="@+id/tvMastodonMention"
+        style="@style/TextAppearance.Content" />
+
+    <TextView
+        android:id="@+id/tvMastodonHashtag"
+        style="@style/TextAppearance.Content" />
+
+    <TextView
+        style="@style/TextAppearance.Divider"
         android:text="@string/divider_email" />
 
     <TextView
