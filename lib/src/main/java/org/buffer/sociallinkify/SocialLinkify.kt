@@ -32,8 +32,10 @@ object SocialLinkify {
             PatternType.URL to urlPattern, PatternType.HASHTAG to hashtagPattern,
             PatternType.MENTION to mentionPattern)
 
-    fun socialLinkifyText(color: Int, text: String?, socialNetwork: SocialNetwork,
-                          vararg patternTypes: PatternType): Spanned {
+    fun socialLinkifyText(
+        color: Int, text: String?, socialNetwork: SocialNetwork,
+        vararg patternTypes: PatternType, server: String? = null
+    ): Spanned {
         text ?: return SpannedString("")
 
         val spannable = SpannableString(text)
@@ -49,7 +51,7 @@ object SocialLinkify {
                             val spans = spannable.getSpans(start, end, URLSpan::class.java)
                             if (spans.isEmpty()) {
                                 val url = buildSpan(color, spanText, socialNetwork,
-                                        patternTypes[index])
+                                        patternTypes[index], server)
                                 spannable.setSpan(url, start, end, 0)
                             }
                         }
@@ -60,29 +62,33 @@ object SocialLinkify {
     }
 
     private fun buildSpan(color: Int, text: String, socialNetwork: SocialNetwork,
-                          patternType: PatternType) = when (patternType) {
+                          patternType: PatternType, server: String?  = null) = when (patternType) {
         PatternType.URL -> CustomTabUrlSpan(color, text)
         PatternType.EMAIL -> HashtagMentionUrlSpan(color,
                 buildUrl(text, socialNetwork, patternType))
-        else -> HashtagMentionUrlSpan(color, buildUrl(text, socialNetwork, patternType))
+        else -> HashtagMentionUrlSpan(color, buildUrl(text, socialNetwork, patternType, server))
     }
 
-    private fun buildUrl(entity: String, socialNetwork: SocialNetwork,
-                         patternType: PatternType) = when (patternType) {
-        PatternType.HASHTAG -> getHashtagUrlBase(socialNetwork) + entity.substring(1, entity.length)
+    private fun buildUrl(
+        entity: String, socialNetwork: SocialNetwork,
+        patternType: PatternType, server: String? = null
+    ) = when (patternType) {
+        PatternType.HASHTAG -> getHashtagUrlBase(socialNetwork, server) + entity.substring(1, entity.length)
         PatternType.EMAIL -> "mailto:$entity"
-        else -> getMentionUrlBase(socialNetwork) + entity.substring(1, entity.length)
+        else -> getMentionUrlBase(socialNetwork, server) + entity.substring(1, entity.length)
     }
 
-    private fun getMentionUrlBase(socialNetwork: SocialNetwork) = when (socialNetwork) {
+    private fun getMentionUrlBase(socialNetwork: SocialNetwork, server: String? = null) = when (socialNetwork) {
         SocialNetwork.FACEBOOK -> URL_BASE_MENTION_FACEBOOK
         SocialNetwork.INSTAGRAM -> URL_BASE_MENTION_INSTAGRAM
+        SocialNetwork.MASTODON -> "https://$server/@"
         else -> URL_BASE_MENTION_TWITTER
     }
 
-    private fun getHashtagUrlBase(socialNetwork: SocialNetwork) = when (socialNetwork) {
+    private fun getHashtagUrlBase(socialNetwork: SocialNetwork, server: String? = null) = when (socialNetwork) {
         SocialNetwork.FACEBOOK -> URL_BASE_HASHTAG_FACEBOOK
         SocialNetwork.INSTAGRAM -> URL_BASE_HASHTAG_INSTAGRAM
+        SocialNetwork.MASTODON -> "https://$server/tags/"
         else -> URL_BASE_HASHTAG_TWITTER
     }
 }
