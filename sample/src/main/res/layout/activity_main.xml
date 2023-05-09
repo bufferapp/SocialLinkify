@@ -38,6 +38,15 @@
         android:id="@+id/tvFacebookHashtag"
         style="@style/TextAppearance.Content" />
 
+
+    <TextView
+        style="@style/TextAppearance.Divider"
+        android:text="@string/divider_youtube" />
+
+    <TextView
+        android:id="@+id/tvYouTubeHashtag"
+        style="@style/TextAppearance.Content" />
+
     <TextView
         style="@style/TextAppearance.Divider"
         android:text="@string/divider_mastodon" />

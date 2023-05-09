@@ -23,6 +23,7 @@ object SocialLinkify {
     val URL_BASE_MENTION_FACEBOOK = "https://www.facebook.com/"
     val URL_BASE_HASHTAG_FACEBOOK = "https://www.facebook.com/hashtag/"
 
+    val URL_YOUTUBE_HASHTAG = "https://www.youtube.com/results?search_query=%23"
     private val hashtagPattern = Pattern.compile("#(\\w+)")
     private val mentionPattern = Pattern.compile("@([a-zA-Z0-9._]+)")
     private val urlPattern = Patterns.WEB_URL
@@ -88,6 +89,7 @@ object SocialLinkify {
     private fun getHashtagUrlBase(socialNetwork: SocialNetwork, server: String? = null) = when (socialNetwork) {
         SocialNetwork.FACEBOOK -> URL_BASE_HASHTAG_FACEBOOK
         SocialNetwork.INSTAGRAM -> URL_BASE_HASHTAG_INSTAGRAM
+        SocialNetwork.YOUTUBE -> URL_YOUTUBE_HASHTAG
         SocialNetwork.MASTODON -> "https://$server/tags/"
         else -> URL_BASE_HASHTAG_TWITTER
     }
