@@ -5,6 +5,7 @@
     <string name="divider_instagram">Instagram</string>
     <string name="divider_facebook">Facebook</string>
     <string name="divider_mastodon">Mastodon</string>
+    <string name="divider_youtube">YouTube</string>
     <string name="divider_email">Email</string>
 
     <string name="twitter_mention">Visit @Buffer on Twitter</string>
@@ -14,5 +15,6 @@
     <string name="instagram_hashtag">View photos with #buffer or #android</string>
     <string name="facebook_hashtag">View posts with #buffer or #android</string>
     <string name="mastodon_hashtag">View toots with #buffer or #android</string>
+    <string name="youtube_hashtag">View posts with #buffer or #android</string>
     <string name="email_text">Hi.there</string>
 </resources>

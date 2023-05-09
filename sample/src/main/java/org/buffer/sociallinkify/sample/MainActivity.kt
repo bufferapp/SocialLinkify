@@ -31,6 +31,7 @@ class MainActivity : Activity() {
         tvInstagramMention.mentionify(R.string.instagram_mention, SocialNetwork.INSTAGRAM)
         tvInstagramHashtag.hashtagify(R.string.instagram_hashtag, SocialNetwork.INSTAGRAM)
         tvFacebookHashtag.hashtagify(R.string.facebook_hashtag, SocialNetwork.FACEBOOK)
+        tvYouTubeHashtag.hashtagify(R.string.youtube_hashtag, SocialNetwork.YOUTUBE)
         tvMastodonHashtag.hashtagify(R.string.mastodon_hashtag, SocialNetwork.MASTODON)
         tvMastodonMention.mentionify(R.string.mastodon_mention, SocialNetwork.MASTODON)
         tvEmail.linkify(R.string.email_text, SocialNetwork.FACEBOOK, URL)
