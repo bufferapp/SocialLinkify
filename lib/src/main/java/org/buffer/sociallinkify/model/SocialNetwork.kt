@@ -12,7 +12,8 @@ enum class SocialNetwork(val id: String) {
     MASTODON("mastodon"),
     TIKTOK("tiktok"),
     YOUTUBE("youtube"),
-    THREADS("threads");
+    THREADS("threads"),
+    BLUESKY("bluesky"),;
 
     companion object {
         fun fromString(name: String) = when (name) {
@@ -28,6 +29,7 @@ enum class SocialNetwork(val id: String) {
             TIKTOK.id -> TIKTOK
             YOUTUBE.id -> YOUTUBE
             THREADS.id -> THREADS
+            BLUESKY.id -> BLUESKY
             else -> throw IllegalArgumentException("Whoops, the social network $name isn't known!")
         }
     }
