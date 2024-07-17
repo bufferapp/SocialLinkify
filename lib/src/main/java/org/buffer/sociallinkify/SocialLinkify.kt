@@ -17,6 +17,9 @@ object SocialLinkify {
     val URL_BASE_MENTION_TWITTER = "https://twitter.com/"
     val URL_BASE_HASHTAG_TWITTER = "https://twitter.com/search?q="
 
+    val URL_BASE_MENTION_BLUESKY = "https://bsky.app/profile/"
+    val URL_BASE_HASHTAG_BLUESKY = "https://bsky.app/search?q="
+
     val URL_BASE_MENTION_INSTAGRAM = "https://www.instagram.com/"
     val URL_BASE_HASHTAG_INSTAGRAM = "https://www.instagram.com/explore/tags/"
 
@@ -83,6 +86,7 @@ object SocialLinkify {
         SocialNetwork.FACEBOOK -> URL_BASE_MENTION_FACEBOOK
         SocialNetwork.INSTAGRAM -> URL_BASE_MENTION_INSTAGRAM
         SocialNetwork.MASTODON -> "https://$server/@"
+        SocialNetwork.BLUESKY -> URL_BASE_MENTION_BLUESKY
         else -> URL_BASE_MENTION_TWITTER
     }
 
@@ -91,6 +95,7 @@ object SocialLinkify {
         SocialNetwork.INSTAGRAM -> URL_BASE_HASHTAG_INSTAGRAM
         SocialNetwork.YOUTUBE -> URL_YOUTUBE_HASHTAG
         SocialNetwork.MASTODON -> "https://$server/tags/"
+        SocialNetwork.BLUESKY -> URL_BASE_HASHTAG_BLUESKY
         else -> URL_BASE_HASHTAG_TWITTER
     }
 }
